@@ -1,80 +1,36 @@
-body {
-  text-align: center;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  background: #ffeef8;
-  padding: 10px;
-  margin: 0;
-  color: #ff69b4;
-}
+const images = [
+  'images/img1.jpg',
+  'images/img2.jpg',
+  'images/img3.jpg',
+  'images/img4.jpg',
+  'images/img5.jpg',
+  'images/img6.jpg'
+];
 
-h1 {
-  font-size: 28px;
-  margin-top: 20px;
-}
+document.getElementById('spin').addEventListener('click', () => {
+  const wheel = document.getElementById('wheel');
+  const result = document.getElementById('result');
 
-p {
-  font-size: 18px;
-}
+  const spinDegrees = 360 * 5 + Math.floor(Math.random() * 360);
+  wheel.style.transform = `rotate(${spinDegrees}deg)`;
 
-.wheel-container {
-  margin: 30px auto;
-  max-width: 90%;
-}
+  const prizeIndex = Math.floor((spinDegrees % 360) / 60);
 
-#wheel {
-  width: 100%;
-  max-width: 300px;
-  height: 300px;
-  border: 10px dotted #ff69b4;
-  border-radius: 50%;
-  margin: 0 auto 20px;
-  background: conic-gradient(
-    #ffb6c1 0% 16.6%, 
-    #ffccff 16.6% 33.2%, 
-    #ffe4e1 33.2% 49.8%, 
-    #ffc0cb 49.8% 66.4%, 
-    #ffb3d9 66.4% 83%, 
-    #ff99cc 83% 100%
-  );
-  transition: transform 3s ease-out;
-}
+  setTimeout(() => {
+    const selectedImage = images[prizeIndex];
+    result.innerHTML = `
+      <p>🌟 Bạn nhận được phần thưởng sau:</p>
+      <img src="${selectedImage}" width="200"><br><br>
+    `;
 
-button {
-  padding: 12px 25px;
-  font-size: 18px;
-  cursor: pointer;
-  border-radius: 12px;
-  background-color: #ff69b4;
-  color: white;
-  border: none;
-}
+    if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
 
-button:hover {
-  background-color: #e055a2;
-}
-
-.visit-link {
-  display: inline-block;
-  margin-top: 20px;
-  text-decoration: none;
-  font-size: 16px;
-  background-color: #ffd1dc;
-  color: #ff1493;
-  padding: 10px 20px;
-  border-radius: 20px;
-}
-
-.visit-link:hover {
-  background-color: #ffb6c1;
-}
-
-#result {
-  margin-top: 20px;
-}
-
-#result img {
-  max-width: 90%;
-  height: auto;
-  border-radius: 12px;
-}
+    const link = document.createElement('a');
+    link.href = selectedImage;
+    link.download = selectedImage.split('/').pop();
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }, 3100);
+});
 
