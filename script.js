@@ -1,10 +1,10 @@
 const images = [
-  'images/img1.jpg',
-  'images/img2.jpg',
-  'images/img3.jpg',
-  'images/img4.jpg',
-  'images/img5.jpg',
-  'images/img6.jpg'
+  'img1.jpg',
+  'img2.jpg',
+  'img3.jpg',
+  'img4.jpg',
+  'img5.jpg',
+  'img6.jpg'
 ];
 
 const spinButton = document.getElementById('spin');
