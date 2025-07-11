@@ -3,28 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vòng Quay May Mắn</title>
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#ffffff">
+  <title>🎡 Vòng Quay Dễ Thương 🎁</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Vòng quay may mắn</h1>
+  <h1>🎀 Vòng quay may mắn 🎀</h1>
+  <p>Chạm để quay và nhận quà dễ thương!</p>
   <div class="wheel-container">
     <div id="wheel"></div>
-    <button id="spin">Quay!</button>
+    <button id="spin">🎲 Quay Ngay!</button>
   </div>
   <div id="result"></div>
-
+  <a href="https://example.com" class="visit-link" target="_blank">💖 Ghé thăm trang quà tặng khác 💖</a>
   <script src="script.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js').then(function(reg) {
-        console.log('Service Worker đăng ký thành công:', reg);
-      }).catch(function(error) {
-        console.log('Đăng ký Service Worker thất bại:', error);
-      });
-    }
-  </script>
 </body>
 </html>
